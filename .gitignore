@@ -1,0 +1,5 @@
+# Auto generated ignores
+build/
+out/
+.vscode/
+.subl/
