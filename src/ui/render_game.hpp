@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../logic/board.hpp"
+#include "../logic/game.hpp"
 
 #include <SFML/Graphics.hpp>
 

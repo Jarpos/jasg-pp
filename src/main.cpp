@@ -1,5 +1,5 @@
 #include "config.hpp"
-#include "logic/board.hpp"
+#include "logic/game.hpp"
 #include "ui/render_game.hpp"
 
 #include <SFML/Graphics.hpp>
