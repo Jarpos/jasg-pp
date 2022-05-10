@@ -17,21 +17,18 @@ void render_game(sf::RenderWindow& w, const logic::Game& b, int tilesize)
             // r.setOutlineThickness(5);
 
             switch (tiles[x][y]) {
-            case logic::TileType::apple: {
+            case logic::TileType::apple:
                 r.setFillColor(sf::Color(0xAA, 0x00, 0x00));
-                r.setOutlineColor(sf::Color(0xFF, 0x00, 0x00));
                 break;
-            }
-            case logic::TileType::head: {
+
+            case logic::TileType::head:
                 r.setFillColor(sf::Color(0x00, 0xDD, 0x00));
-                r.setOutlineColor(sf::Color(0x00, 0xBB, 0x00));
                 break;
-            }
-            case logic::TileType::snake: {
+
+            case logic::TileType::snake:
                 r.setFillColor(sf::Color(0x00, 0xAA, 0x00));
-                r.setOutlineColor(sf::Color(0x00, 0xAA, 0x00));
                 break;
-            }
+
             case logic::TileType::none: continue;
             }
 
