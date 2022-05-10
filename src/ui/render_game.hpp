@@ -29,7 +29,13 @@ void render_game(sf::RenderWindow& w, const logic::Game& b, int tilesize)
                 r.setFillColor(sf::Color(0x00, 0xAA, 0x00));
                 break;
 
-            case logic::TileType::none: continue;
+            case logic::TileType::none:
+                if ((x + y) % 2)
+                    r.setFillColor(sf::Color(0x80, 0x80, 0x80));
+                else
+                    r.setFillColor(sf::Color(0x2b, 0x2b, 0x2b));
+
+                break;
             }
 
             w.draw(r);
