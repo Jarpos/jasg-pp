@@ -21,23 +21,14 @@ int main()
             if (e.type == sf::Event::Closed) window.close();
 
             if (e.type == sf::Event::KeyPressed) {
-                if (e.key.code == sf::Keyboard::Left) {
-                    direction |= (int)logic::MoveDirection::left;
+                if (e.key.code == sf::Keyboard::Left)
                     game.SetDirection(logic::MoveDirection::left);
-                }
-                if (e.key.code == sf::Keyboard::Right) {
-                    direction |= (int)logic::MoveDirection::right;
+                if (e.key.code == sf::Keyboard::Right)
                     game.SetDirection(logic::MoveDirection::right);
-                }
-                if (e.key.code == sf::Keyboard::Up) {
-                    direction |= (int)logic::MoveDirection::up;
+                if (e.key.code == sf::Keyboard::Up)
                     game.SetDirection(logic::MoveDirection::up);
-                }
-                if (e.key.code == sf::Keyboard::Down) {
-                    direction |= (int)logic::MoveDirection::down;
+                if (e.key.code == sf::Keyboard::Down)
                     game.SetDirection(logic::MoveDirection::down);
-
-                }
             }
         }
 
