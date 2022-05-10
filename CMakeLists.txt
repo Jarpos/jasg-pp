@@ -21,7 +21,11 @@ find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
 set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
 set(psd ${PROJECT_SOURCE_DIR})
-set(cd ${psd})
+
+set(cd ${psd}/src/logic)
+set(logiclib ${cd}/game.cpp)
+add_library(logiclib "${logiclib}")
 
 add_executable(jasg-pp src/main.cpp)
+target_link_libraries(jasg-pp logiclib)
 target_link_libraries(jasg-pp sfml-graphics sfml-audio)
