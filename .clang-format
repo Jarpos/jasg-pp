@@ -1,29 +1,22 @@
 ---
-# Configured via this: https://zed0.co.uk/clang-format-configurator/
+### Configured via: https://zed0.co.uk/clang-format-configurator/
+### Documentation: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
 AlignEscapedNewlines: Left
-AlignTrailingComments: 'true'
 AllowAllArgumentsOnNextLine: 'true'
 AllowAllConstructorInitializersOnNextLine: 'true'
 AllowShortCaseLabelsOnASingleLine: 'true'
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortLambdasOnASingleLine: Empty
-AllowShortLoopsOnASingleLine: 'true'
-AllowShortBlocksOnASingleLine: true
-AllowShortIfStatementsOnASingleLine: true
 AlwaysBreakAfterReturnType: None
 AlwaysBreakTemplateDeclarations: 'Yes'
 BinPackParameters: 'false'
 BreakBeforeBraces: Linux
-BreakBeforeTernaryOperators: 'false'
 BreakConstructorInitializers: AfterColon
 ColumnLimit: '90'
 CompactNamespaces: 'false'
-ContinuationIndentWidth: '4'
-Cpp11BracedListStyle: 'false'
-FixNamespaceComments: 'true'
+Cpp11BracedListStyle: 'true'
 IncludeBlocks: Regroup
 IndentPPDirectives: BeforeHash
-IndentWidth: '4'
 NamespaceIndentation: Inner
 PointerAlignment: Left
 SpaceAfterCStyleCast: 'false'
@@ -32,4 +25,26 @@ SpaceBeforeAssignmentOperators: 'true'
 SpaceBeforeCpp11BracedList: 'true'
 SpaceBeforeCtorInitializerColon: 'true'
 SpaceBeforeInheritanceColon: 'true'
+
+### Indentation Settings
+ContinuationIndentWidth: '4'
+IndentWidth: '4'
 UseTab: Never
+
+### Comment Settings
+AlignTrailingComments: 'true'
+FixNamespaceComments: 'true'
+ReflowComments: 'true'
+
+### Control Block Settings
+AllowShortLoopsOnASingleLine: 'true'
+AllowShortBlocksOnASingleLine: 'true'
+AllowShortIfStatementsOnASingleLine: 'true'
+IndentCaseLabels: 'true'
+BreakBeforeTernaryOperators: 'true'
+
+### Class Access Modifier Settings
+EmptyLineBeforeAccessModifier: 'Always'
+EmptyLineAfterAccessModifier: 'Never'
+# IndentAccessModifiers: 'true'
+AccessModifierOffset: -4
