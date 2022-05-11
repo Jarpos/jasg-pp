@@ -31,22 +31,22 @@ bool Game::DoMove()
                 this->board[x][y] = TileType::none;
 
                 switch (this->current_direction) {
-                case MoveDirection::left: {
-                    this->board[x - 1][y] = TileType::head;
-                    break;
-                }
-                case MoveDirection::right: {
-                    this->board[x + 1][y] = TileType::head;
-                    break;
-                }
-                case MoveDirection::up: {
-                    this->board[x][y - 1] = TileType::head;
-                    break;
-                }
-                case MoveDirection::down: {
-                    this->board[x][y + 1] = TileType::head;
-                    break;
-                }
+                    case MoveDirection::left: {
+                        this->board[x - 1][y] = TileType::head;
+                        break;
+                    }
+                    case MoveDirection::right: {
+                        this->board[x + 1][y] = TileType::head;
+                        break;
+                    }
+                    case MoveDirection::up: {
+                        this->board[x][y - 1] = TileType::head;
+                        break;
+                    }
+                    case MoveDirection::down: {
+                        this->board[x][y + 1] = TileType::head;
+                        break;
+                    }
                 }
                 return true;
             }
