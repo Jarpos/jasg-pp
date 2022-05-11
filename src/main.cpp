@@ -29,6 +29,9 @@ int main()
                     game.SetDirection(logic::MoveDirection::up);
                 if (e.key.code == sf::Keyboard::Down)
                     game.SetDirection(logic::MoveDirection::down);
+
+                if (e.key.code == sf::Keyboard::Escape)
+                    window.close();
             }
         }
 
