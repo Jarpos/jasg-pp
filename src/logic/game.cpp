@@ -1,5 +1,7 @@
 #include "game.hpp"
 
+#include <time.h>
+
 namespace logic
 {
 
@@ -7,8 +9,7 @@ Game::Game(const int xysize) :
     board(xysize, std::vector<TileType>(xysize, TileType::none))
 {
     board[xysize / 2][xysize / 2] = TileType::head;
-    board[5][2] = TileType::apple;
-    board[6][5] = TileType::snake;
+    this->GenerateApple();
 }
 
 Game::~Game() {}
@@ -53,6 +54,16 @@ bool Game::DoMove()
         }
     }
     return false;
+}
+
+void Game::GenerateApple()
+{
+    srand(time(NULL));
+    int x = rand() % this->board.size();
+    int y = rand() % this->board.size();
+    if (this->board[x][y] == TileType::none) {
+        this->board[x][y] = TileType::apple;
+    }
 }
 
 } // namespace logic

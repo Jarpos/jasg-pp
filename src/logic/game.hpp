@@ -15,18 +15,21 @@ enum class TileType : int { none, apple, head, snake };
 
 class Game
 {
-  private:
+private:
     std::vector<std::vector<TileType>> board;
     MoveDirection current_direction = MoveDirection::up;
 
-  public:
+public:
     Game(const int xysize);
     ~Game();
 
-  public:
+public:
     const std::vector<std::vector<TileType>>& getBoard() const;
     void SetDirection(MoveDirection d);
     bool DoMove();
+
+private:
+    void GenerateApple();
 };
 
 } // namespace logic
