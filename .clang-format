@@ -39,7 +39,7 @@ ReflowComments: 'true'
 ### Control Block Settings
 AllowShortLoopsOnASingleLine: 'true'
 AllowShortBlocksOnASingleLine: 'true'
-AllowShortIfStatementsOnASingleLine: 'true'
+AllowShortIfStatementsOnASingleLine: 'false'
 IndentCaseLabels: 'true'
 BreakBeforeTernaryOperators: 'true'
 
