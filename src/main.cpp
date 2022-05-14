@@ -37,6 +37,10 @@ int main()
 
         // Logic
         game.NextRound();
+        if (game.CheckCollisions()) {
+            std::cout << "Lost\n";
+            game = logic::Game(config::TILES_X);
+        }
 
         // Rendering
         window.clear();
