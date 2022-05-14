@@ -37,6 +37,7 @@ public:
     const int GetSize() const;
     const std::vector<Position_t>& GetSnake() const;
     const Position_t& GetApple() const;
+    const bool CheckCollisions() const;
 
 public:
     void SetDirection(MoveDirection d);

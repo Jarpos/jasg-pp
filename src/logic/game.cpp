@@ -1,5 +1,6 @@
 #include "game.hpp"
 
+#include <algorithm>
 #include <time.h>
 
 namespace logic
@@ -9,8 +10,8 @@ Game::Game(const int xysize) :
     size(xysize), snake({Position_t(xysize / 2, xysize / 2)}),
     current_direction(MoveDirection::up), apple(Position_t::GetRandom(xysize))
 {
-    snake.push_back(Position_t(xysize / 2, xysize / 2 - 1));
-    snake.push_back(Position_t(xysize / 2, xysize / 2 - 2));
+    this->snake.push_back(this->snake.back());
+    this->snake.push_back(this->snake.back());
 }
 
 Game::~Game() {}
@@ -28,6 +29,18 @@ const Position_t& Game::GetApple() const
 const std::vector<Position_t>& Game::GetSnake() const
 {
     return this->snake;
+}
+
+const bool Game::CheckCollisions() const
+{
+    const Position_t& head = this->snake.front();
+    if (head.x < 0 || head.y < 0)
+        return true;
+    if (head.x > this->size || head.y > this->size)
+        return true;
+
+    return std::find(this->snake.begin() + 1, this->snake.end(), this->snake.front()) !=
+           this->snake.end();
 }
 
 void Game::SetDirection(MoveDirection d)
@@ -53,8 +66,7 @@ void Game::SetDirection(MoveDirection d)
 bool Game::NextRound()
 {
     for (int i = this->snake.size() - 1; i > 0; i--) {
-        this->snake.at(i).x = this->snake.at(i - 1).x;
-        this->snake.at(i).y = this->snake.at(i - 1).y;
+        this->snake.at(i) = this->snake.at(i - 1);
     }
 
     switch (this->current_direction) {
@@ -69,7 +81,7 @@ bool Game::NextRound()
         this->GenerateApple();
     }
 
-    return true;
+    return this->CheckCollisions();
 }
 
 void Game::GenerateApple()
