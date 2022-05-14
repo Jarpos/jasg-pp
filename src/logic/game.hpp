@@ -1,5 +1,7 @@
 #pragma once
 
+#include "position.hpp"
+
 #include <vector>
 
 namespace logic
@@ -22,20 +24,27 @@ enum class MoveDirection : int {
 class Game
 {
 private:
-    std::vector<std::vector<TileType>> board;
-    MoveDirection current_direction = MoveDirection::up;
+    int size;
+    std::vector<Position_t> snake;
+    MoveDirection current_direction;
+    Position_t apple;
 
 public:
     Game(const int xysize);
     ~Game();
 
 public:
-    const std::vector<std::vector<TileType>>& getBoard() const;
+    const int GetSize() const;
+    const std::vector<Position_t>& GetSnake() const;
+    const Position_t& GetApple() const;
+
+public:
     void SetDirection(MoveDirection d);
-    bool DoMove();
+    bool NextRound();
 
 private:
     void GenerateApple();
+    void Move(int x, int y);
 };
 
 } // namespace logic
