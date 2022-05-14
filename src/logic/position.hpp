@@ -12,7 +12,7 @@ struct Position_t {
 
     Position_t(int x, int y) : x(x), y(y) {}
 
-    int operator==(Position_t l);
+    int operator==(const Position_t& l) const;
 
     static Position_t GetRandom(int bounds)
     {
