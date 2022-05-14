@@ -10,7 +10,7 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(750, 750), "Just Another Snake Game++",
                             sf::Style::None | sf::Style::Close);
-    window.setFramerateLimit(2);
+    window.setFramerateLimit(5);
     window.setKeyRepeatEnabled(false);
     logic::Game game(config::TILES_X);
 
@@ -36,7 +36,7 @@ int main()
         }
 
         // Logic
-        game.DoMove();
+        game.NextRound();
 
         // Rendering
         window.clear();
