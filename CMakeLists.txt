@@ -23,7 +23,7 @@ set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
 set(psd ${PROJECT_SOURCE_DIR})
 
 set(cd ${psd}/src/logic)
-set(logiclib ${cd}/game.cpp)
+set(logiclib ${cd}/game.cpp ${cd}/position.cpp)
 add_library(logiclib "${logiclib}")
 
 add_executable(jasg-pp src/main.cpp)
