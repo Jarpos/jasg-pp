@@ -6,64 +6,75 @@ namespace logic
 {
 
 Game::Game(const int xysize) :
-    board(xysize, std::vector<TileType>(xysize, TileType::none))
+    size(xysize), snake({Position_t(xysize / 2, xysize / 2)}),
+    current_direction(MoveDirection::up), apple(Position_t::GetRandom(xysize))
 {
-    board[xysize / 2][xysize / 2] = TileType::head;
-    this->GenerateApple();
+    snake.push_back(Position_t(xysize / 2, xysize / 2 - 1));
+    snake.push_back(Position_t(xysize / 2, xysize / 2 - 2));
 }
 
 Game::~Game() {}
 
-const std::vector<std::vector<TileType>>& Game::getBoard() const
+const int Game::GetSize() const
 {
-    return this->board;
+    return this->size;
+}
+
+const Position_t& Game::GetApple() const
+{
+    return this->apple;
+}
+
+const std::vector<Position_t>& Game::GetSnake() const
+{
+    return this->snake;
 }
 
 void Game::SetDirection(MoveDirection d)
 {
-    this->current_direction = d;
+    MoveDirection nd, cd = this->current_direction;
+    switch (d) {
+        case MoveDirection::up:
+            nd = cd == MoveDirection::down ? MoveDirection::down : d;
+            break;
+        case MoveDirection::down:
+            nd = cd == MoveDirection::up ? MoveDirection::up : d;
+            break;
+        case MoveDirection::left:
+            nd = cd == MoveDirection::right ? MoveDirection::right : d;
+            break;
+        case MoveDirection::right:
+            nd = cd == MoveDirection::left ? MoveDirection::left : d;
+            break;
+    }
+    this->current_direction = nd;
 }
 
-bool Game::DoMove()
+bool Game::NextRound()
 {
-    for (int x = 0; x < this->board.size(); x++) {
-        for (int y = 0; y < this->board[x].size(); y++) {
-            if (this->board[x][y] == TileType::head) {
-                this->board[x][y] = TileType::none;
-
-                switch (this->current_direction) {
-                    case MoveDirection::left: {
-                        this->board[x - 1][y] = TileType::head;
-                        break;
-                    }
-                    case MoveDirection::right: {
-                        this->board[x + 1][y] = TileType::head;
-                        break;
-                    }
-                    case MoveDirection::up: {
-                        this->board[x][y - 1] = TileType::head;
-                        break;
-                    }
-                    case MoveDirection::down: {
-                        this->board[x][y + 1] = TileType::head;
-                        break;
-                    }
-                }
-                return true;
-            }
-        }
+    for (int i = this->snake.size() - 1; i > 0; i--) {
+        this->snake.at(i).x = this->snake.at(i - 1).x;
+        this->snake.at(i).y = this->snake.at(i - 1).y;
     }
-    return false;
+
+    switch (this->current_direction) {
+        case MoveDirection::up: /*****/ this->snake.front().y--; break;
+        case MoveDirection::down: /***/ this->snake.front().y++; break;
+        case MoveDirection::left: /***/ this->snake.front().x--; break;
+        case MoveDirection::right: /**/ this->snake.front().x++; break;
+    }
+
+    if (this->snake.front() == this->apple) {
+        this->snake.push_back(this->snake.back());
+        this->GenerateApple();
+    }
+
+    return true;
 }
 
 void Game::GenerateApple()
 {
-    srand(time(NULL));
-    int x = rand() % this->board.size();
-    int y = rand() % this->board.size();
-    if (this->board[x][y] == TileType::none) {
-        this->board[x][y] = TileType::apple;
-    }
+    this->apple = Position_t::GetRandom(this->size);
 }
 
 } // namespace logic
