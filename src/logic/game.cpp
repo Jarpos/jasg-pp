@@ -7,7 +7,7 @@ namespace logic
 {
 
 Game::Game(const int xysize) :
-    size(xysize), snake({Position_t(xysize / 2, xysize / 2)}),
+    size(xysize), snake({ Position_t(xysize / 2, xysize / 2) }),
     current_direction(MoveDirection::up), apple(Position_t::GetRandom(xysize))
 {
     this->snake.push_back(this->snake.back());
