@@ -35,6 +35,11 @@ void render_game(sf::RenderWindow& w, const logic::Game& g, int tilesize)
         r.setPosition(s.x * tilesize, s.y * tilesize);
         w.draw(r);
     }
+
+    sf::RectangleShape head(sf::Vector2f(tilesize, tilesize));
+    head.setFillColor(sf::Color(0x00, 0xFF, 0x00));
+    head.setPosition(g.GetSnake().at(0).x * tilesize, g.GetSnake().at(0).y * tilesize);
+    w.draw(head);
 }
 
 } // namespace ui
