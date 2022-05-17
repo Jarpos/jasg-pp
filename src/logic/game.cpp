@@ -84,7 +84,12 @@ void Game::NextRound()
 
 void Game::GenerateApple()
 {
-    this->apple = Position_t::GetRandom(this->size);
+    // This is not a good way to do this
+    // TODO: Implement better way to do this
+    Position_t p = Position_t::GetRandom(this->GetSize());
+    while (std::find(this->snake.begin(), this->snake.end(), p) != this->snake.end())
+        p = Position_t::GetRandom(this->GetSize());
+    this->apple = p;
 }
 
 } // namespace logic
