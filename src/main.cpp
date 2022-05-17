@@ -18,7 +18,8 @@ int main()
         sf::Event e;
         int direction = 0;
         while (window.pollEvent(e)) {
-            if (e.type == sf::Event::Closed) window.close();
+            if (e.type == sf::Event::Closed)
+                window.close();
 
             if (e.type == sf::Event::KeyPressed) {
                 if (e.key.code == sf::Keyboard::Left)
@@ -36,11 +37,11 @@ int main()
         }
 
         // Logic
-        game.NextRound();
         if (game.CheckCollisions()) {
             std::cout << "Lost\n";
             game = logic::Game(config::TILES_X);
         }
+        game.NextRound();
 
         // Rendering
         window.clear();
