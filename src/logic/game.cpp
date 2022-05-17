@@ -63,7 +63,7 @@ void Game::SetDirection(MoveDirection d)
     this->current_direction = nd;
 }
 
-bool Game::NextRound()
+void Game::NextRound()
 {
     for (int i = this->snake.size() - 1; i > 0; i--) {
         this->snake.at(i) = this->snake.at(i - 1);
@@ -80,8 +80,6 @@ bool Game::NextRound()
         this->snake.push_back(this->snake.back());
         this->GenerateApple();
     }
-
-    return this->CheckCollisions();
 }
 
 void Game::GenerateApple()

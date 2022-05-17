@@ -41,7 +41,7 @@ public:
 
 public:
     void SetDirection(MoveDirection d);
-    bool NextRound();
+    void NextRound();
 
 private:
     void GenerateApple();
