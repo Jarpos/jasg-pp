@@ -13,6 +13,7 @@ int main()
     window.setFramerateLimit(5);
     window.setKeyRepeatEnabled(false);
     logic::Game game(config::TILES_X);
+    logic::MoveDirection mdir = logic::MoveDirection::up;
 
     while (window.isOpen()) {
         sf::Event e;
@@ -23,13 +24,13 @@ int main()
 
             if (e.type == sf::Event::KeyPressed) {
                 if (e.key.code == sf::Keyboard::Left)
-                    game.SetDirection(logic::MoveDirection::left);
+                    mdir = logic::MoveDirection::left;
                 if (e.key.code == sf::Keyboard::Right)
-                    game.SetDirection(logic::MoveDirection::right);
+                    mdir = logic::MoveDirection::right;
                 if (e.key.code == sf::Keyboard::Up)
-                    game.SetDirection(logic::MoveDirection::up);
+                    mdir = logic::MoveDirection::up;
                 if (e.key.code == sf::Keyboard::Down)
-                    game.SetDirection(logic::MoveDirection::down);
+                    mdir = logic::MoveDirection::down;
 
                 if (e.key.code == sf::Keyboard::Escape)
                     window.close();
@@ -37,6 +38,7 @@ int main()
         }
 
         // Logic
+        game.SetDirection(mdir);
         if (game.CheckCollisions()) {
             std::cout << "Lost\n";
             game = logic::Game(config::TILES_X);
