@@ -36,7 +36,7 @@ const bool Game::CheckCollisions() const
     const Position_t& head = this->snake.front();
     if (head.x < 0 || head.y < 0)
         return true;
-    if (head.x > this->size || head.y > this->size)
+    if (head.x >= this->size || head.y >= this->size)
         return true;
 
     return std::find(this->snake.begin() + 1, this->snake.end(), this->snake.front()) !=
