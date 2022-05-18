@@ -33,12 +33,8 @@ void render_game(sf::RenderWindow& w, const logic::Game& g, int tilesize)
     for (const auto& s : g.GetSnake()) {
         sf::RectangleShape r(sf::Vector2f(tilesize, tilesize));
         r.setPosition(s.x * tilesize, s.y * tilesize);
-
-        if (i++ % 2)
-            r.setFillColor(sf::Color(0x00, 0xAA, 0x00));
-        else
-            r.setFillColor(sf::Color(0x00, 0xBB, 0x00));
-
+        r.setFillColor(i++ % 2 ? sf::Color(0x00, 0xAA, 0x00)
+                               : sf::Color(0x00, 0xBB, 0x00));
         w.draw(r);
     }
 
