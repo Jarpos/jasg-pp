@@ -10,8 +10,7 @@ Game::Game(const int xysize) :
     size(xysize), snake({ Position_t(xysize / 2, xysize / 2) }),
     current_direction(MoveDirection::up), apple(Position_t::GetRandom(xysize))
 {
-    this->snake.push_back(this->snake.back());
-    this->snake.push_back(this->snake.back());
+    this->Grow(5);
 }
 
 Game::~Game() {}
@@ -77,8 +76,8 @@ void Game::NextRound()
     }
 
     if (this->snake.front() == this->apple) {
-        this->snake.push_back(this->snake.back());
         this->GenerateApple();
+        this->Grow();
     }
 }
 
@@ -90,6 +89,12 @@ void Game::GenerateApple()
     while (std::find(this->snake.begin(), this->snake.end(), p) != this->snake.end())
         p = Position_t::GetRandom(this->GetSize());
     this->apple = p;
+}
+
+int Game::Grow(int l)
+{
+    for (; l > 0; --l) this->snake.push_back(this->snake.back());
+    return this->snake.size();
 }
 
 } // namespace logic

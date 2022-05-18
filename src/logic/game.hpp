@@ -40,8 +40,9 @@ public:
     const bool CheckCollisions() const;
 
 public:
-    void SetDirection(MoveDirection d);
     void NextRound();
+    void SetDirection(MoveDirection d);
+    int Grow(int l = 1);
 
 private:
     void GenerateApple();
