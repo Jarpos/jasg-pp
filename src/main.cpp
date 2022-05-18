@@ -17,7 +17,6 @@ int main()
 
     while (window.isOpen()) {
         sf::Event e;
-        int direction = 0;
         while (window.pollEvent(e)) {
             if (e.type == sf::Event::Closed)
                 window.close();
@@ -41,6 +40,7 @@ int main()
         game.SetDirection(mdir);
         if (game.CheckCollisions()) {
             std::cout << "Lost\n";
+            mdir = logic::MoveDirection::up;
             game = logic::Game(config::TILES_X);
         }
         game.NextRound();
