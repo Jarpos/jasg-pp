@@ -26,6 +26,10 @@ set(cd ${psd}/src/logic)
 set(logiclib ${cd}/game.cpp ${cd}/position.cpp)
 add_library(logiclib "${logiclib}")
 
+set(cd ${psd}/src/ui)
+set(uilib ${cd}/render_game.cpp)
+add_library(uilib "${uilib}")
+
 add_executable(jasg-pp src/main.cpp)
-target_link_libraries(jasg-pp logiclib)
+target_link_libraries(jasg-pp logiclib uilib)
 target_link_libraries(jasg-pp sfml-graphics sfml-audio)
