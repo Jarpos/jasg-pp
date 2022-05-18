@@ -16,7 +16,11 @@ struct Position_t {
 
     static Position_t GetRandom(int bounds)
     {
-        srand(time(NULL));
+        static bool ran = false;
+        if (!ran) {
+            srand(time(NULL));
+            ran = true;
+        }
         return Position_t(rand() % bounds, rand() % bounds);
     }
 };
