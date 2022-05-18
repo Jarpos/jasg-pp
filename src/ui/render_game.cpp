@@ -12,11 +12,8 @@ void render_game(sf::RenderWindow& w, const logic::Game& g, int tilesize)
         for (int y = 0; y < g.GetSize(); y++) {
             sf::RectangleShape r(sf::Vector2f(tilesize, tilesize));
             r.setPosition(x * tilesize, y * tilesize);
-
-            if ((x + y) % 2)
-                r.setFillColor(sf::Color(0x80, 0x80, 0x80));
-            else
-                r.setFillColor(sf::Color(0x2b, 0x2b, 0x2b));
+            r.setFillColor((x + y) % 2 ? sf::Color(0x80, 0x80, 0x80)
+                                       : sf::Color(0x2b, 0x2b, 0x2b));
             w.draw(r);
         }
     }
