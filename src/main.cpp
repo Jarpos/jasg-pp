@@ -13,7 +13,9 @@ int main()
     window.setFramerateLimit(5);
     window.setKeyRepeatEnabled(false);
     logic::Game game(config::TILES_X);
+
     logic::MoveDirection mdir = logic::MoveDirection::up;
+    bool pause = false;
 
     while (window.isOpen()) {
         sf::Event e;
@@ -33,17 +35,21 @@ int main()
 
                 if (e.key.code == sf::Keyboard::Escape)
                     window.close();
+                if (e.key.code == sf::Keyboard::Space)
+                    pause = !pause;
             }
         }
 
-        // Logic
-        game.SetDirection(mdir);
-        if (game.CheckCollisions()) {
-            std::cout << "Lost\n";
-            mdir = logic::MoveDirection::up;
-            game = logic::Game(config::TILES_X);
+        if (!pause) {
+            // Logic
+            game.SetDirection(mdir);
+            if (game.CheckCollisions()) {
+                std::cout << "Lost\n";
+                mdir = logic::MoveDirection::up;
+                game = logic::Game(config::TILES_X);
+            }
+            game.NextRound();
         }
-        game.NextRound();
 
         // Rendering
         window.clear();
