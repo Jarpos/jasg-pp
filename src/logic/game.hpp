@@ -45,7 +45,6 @@ public:
 
 private:
     void GenerateApple();
-    void Move(int x, int y);
 };
 
 } // namespace logic
