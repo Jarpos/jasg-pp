@@ -13,8 +13,6 @@ Game::Game(const int xysize) :
     this->Grow(5);
 }
 
-Game::~Game() {}
-
 const int Game::GetSize() const
 {
     return this->size;

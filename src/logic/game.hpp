@@ -31,7 +31,6 @@ private:
 
 public:
     Game(const int xysize);
-    ~Game();
 
 public:
     const int GetSize() const;
