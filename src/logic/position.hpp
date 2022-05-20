@@ -7,12 +7,13 @@ namespace logic
 {
 
 struct Position_t {
-    int x;
-    int y;
+    int x, y;
 
     Position_t(int x, int y) : x(x), y(y) {}
 
     int operator==(const Position_t& l) const;
+    Position_t operator+(const Position_t& l);
+    Position_t operator-(const Position_t& l);
 
     static Position_t GetRandom(int bounds)
     {
