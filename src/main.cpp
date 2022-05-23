@@ -12,10 +12,10 @@ int main()
                             sf::Style::None | sf::Style::Titlebar | sf::Style::Close);
     window.setFramerateLimit(5);
     window.setKeyRepeatEnabled(false);
-    logic::Game game(config::TILES_X);
 
-    logic::MoveDirection mdir = logic::MoveDirection::up;
     bool pause = false;
+    logic::Game game(config::TILES_X);
+    logic::MoveDirection mdir = logic::MoveDirection::up;
 
     while (window.isOpen()) {
         sf::Event e;
@@ -24,24 +24,21 @@ int main()
                 window.close();
 
             if (e.type == sf::Event::KeyPressed) {
-                if (e.key.code == sf::Keyboard::Left)
-                    mdir = logic::MoveDirection::left;
-                if (e.key.code == sf::Keyboard::Right)
-                    mdir = logic::MoveDirection::right;
-                if (e.key.code == sf::Keyboard::Up)
-                    mdir = logic::MoveDirection::up;
-                if (e.key.code == sf::Keyboard::Down)
-                    mdir = logic::MoveDirection::down;
+                switch (e.key.code) {
+                    case sf::Keyboard::Left: /***/ mdir = logic::MoveDirection::left; break;
+                    case sf::Keyboard::Right: /**/ mdir = logic::MoveDirection::right; break;
+                    case sf::Keyboard::Up: /*****/ mdir = logic::MoveDirection::up; break;
+                    case sf::Keyboard::Down: /***/ mdir = logic::MoveDirection::down; break;
 
-                if (e.key.code == sf::Keyboard::Escape)
-                    window.close();
-                if (e.key.code == sf::Keyboard::Space)
-                    pause = !pause;
+                    case sf::Keyboard::Escape: window.close(); break;
+                    case sf::Keyboard::Space: pause = !pause; break;
+                    default: break;
+                }
             }
         }
 
+        // Logic
         if (!pause) {
-            // Logic
             game.SetDirection(mdir);
             if (game.CheckCollisions()) {
                 std::cout << "Lost\n";

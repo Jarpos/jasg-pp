@@ -44,27 +44,17 @@ void Game::SetDirection(MoveDirection d)
 {
     MoveDirection nd, cd = this->current_direction;
     switch (d) {
-        case MoveDirection::up:
-            nd = cd == MoveDirection::down ? MoveDirection::down : d;
-            break;
-        case MoveDirection::down:
-            nd = cd == MoveDirection::up ? MoveDirection::up : d;
-            break;
-        case MoveDirection::left:
-            nd = cd == MoveDirection::right ? MoveDirection::right : d;
-            break;
-        case MoveDirection::right:
-            nd = cd == MoveDirection::left ? MoveDirection::left : d;
-            break;
+        case MoveDirection::up: nd = cd == MoveDirection::down ? MoveDirection::down : d; break;
+        case MoveDirection::down: nd = cd == MoveDirection::up ? MoveDirection::up : d; break;
+        case MoveDirection::left: nd = cd == MoveDirection::right ? MoveDirection::right : d; break;
+        case MoveDirection::right: nd = cd == MoveDirection::left ? MoveDirection::left : d; break;
     }
     this->current_direction = nd;
 }
 
 void Game::NextRound()
 {
-    for (int i = this->snake.size() - 1; i > 0; i--) {
-        this->snake.at(i) = this->snake.at(i - 1);
-    }
+    for (int i = this->snake.size() - 1; i > 0; i--) { this->snake.at(i) = this->snake.at(i - 1); }
 
     switch (this->current_direction) {
         case MoveDirection::up: /*****/ this->snake.front().y--; break;

@@ -12,8 +12,7 @@ void render_game(sf::RenderWindow& w, const logic::Game& g, int tilesize)
         for (int y = 0; y < g.GetSize(); y++) {
             sf::RectangleShape r(sf::Vector2f(tilesize, tilesize));
             r.setPosition(x * tilesize, y * tilesize);
-            r.setFillColor((x + y) % 2 ? sf::Color(0x80, 0x80, 0x80)
-                                       : sf::Color(0x2b, 0x2b, 0x2b));
+            r.setFillColor((x + y) % 2 ? sf::Color(0x80, 0x80, 0x80) : sf::Color(0x2b, 0x2b, 0x2b));
             w.draw(r);
         }
     }
@@ -28,8 +27,7 @@ void render_game(sf::RenderWindow& w, const logic::Game& g, int tilesize)
     for (const auto& s : g.GetSnake()) {
         sf::RectangleShape r(sf::Vector2f(tilesize, tilesize));
         r.setPosition(s.x * tilesize, s.y * tilesize);
-        r.setFillColor(i++ % 2 ? sf::Color(0x00, 0xAA, 0x00)
-                               : sf::Color(0x00, 0xBB, 0x00));
+        r.setFillColor(i++ % 2 ? sf::Color(0x00, 0xAA, 0x00) : sf::Color(0x00, 0xBB, 0x00));
         w.draw(r);
     }
 
