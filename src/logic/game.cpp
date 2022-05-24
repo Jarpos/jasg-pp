@@ -53,7 +53,9 @@ void Game::SetDirection(const MoveDirection& d)
 
 void Game::NextRound()
 {
-    for (int i = this->snake.size() - 1; i > 0; i--) { this->snake.at(i) = this->snake.at(i - 1); }
+    for (int i = this->snake.size() - 1; i > 0; i--) {
+        this->snake.at(i) = this->snake.at(i - 1);
+    }
 
     switch (this->current_direction) {
         case MoveDirection::up: /*****/ this->snake.front().y--; break;
@@ -80,7 +82,9 @@ void Game::GenerateApple()
 
 int Game::Grow(int l)
 {
-    for (; l > 0; --l) this->snake.push_back(this->snake.back());
+    for (; l > 0; --l) {
+        this->snake.push_back(this->snake.back());
+    }
     return this->snake.size();
 }
 

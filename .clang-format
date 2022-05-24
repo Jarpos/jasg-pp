@@ -37,7 +37,7 @@ FixNamespaceComments: 'true'
 ReflowComments: 'true'
 
 ### Control Block Settings
-AllowShortLoopsOnASingleLine: 'true'
+AllowShortLoopsOnASingleLine: 'false'
 AllowShortBlocksOnASingleLine: 'true'
 AllowShortIfStatementsOnASingleLine: 'false'
 IndentCaseLabels: 'true'
