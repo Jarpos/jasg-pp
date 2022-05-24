@@ -1,7 +1,6 @@
 #include "game.hpp"
 
 #include <algorithm>
-#include <time.h>
 
 namespace logic
 {
