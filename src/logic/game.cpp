@@ -39,7 +39,7 @@ const bool Game::CheckCollisions() const
            this->snake.end();
 }
 
-void Game::SetDirection(MoveDirection d)
+void Game::SetDirection(const MoveDirection& d)
 {
     MoveDirection nd, cd = this->current_direction;
     switch (d) {

@@ -24,13 +24,13 @@ int main()
 
             if (e.type == sf::Event::KeyPressed) {
                 switch (e.key.code) {
-                    case sf::Keyboard::Left: /***/ mdir = logic::MoveDirection::left; break;
-                    case sf::Keyboard::Right: /**/ mdir = logic::MoveDirection::right; break;
                     case sf::Keyboard::Up: /*****/ mdir = logic::MoveDirection::up; break;
                     case sf::Keyboard::Down: /***/ mdir = logic::MoveDirection::down; break;
+                    case sf::Keyboard::Left: /***/ mdir = logic::MoveDirection::left; break;
+                    case sf::Keyboard::Right: /**/ mdir = logic::MoveDirection::right; break;
 
-                    case sf::Keyboard::Escape: window.close(); break;
-                    case sf::Keyboard::Space: pause = !pause; break;
+                    case sf::Keyboard::Space: /***/ pause = !pause; break;
+                    case sf::Keyboard::Escape: /**/ window.close(); break;
                     default: break;
                 }
             }

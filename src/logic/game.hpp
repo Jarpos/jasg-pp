@@ -15,10 +15,10 @@ enum class TileType : int {
 };
 
 enum class MoveDirection : int {
-    left,
-    right,
     up,
     down,
+    left,
+    right,
 };
 
 class Game
@@ -40,7 +40,7 @@ public:
 
 public:
     void NextRound();
-    void SetDirection(MoveDirection d);
+    void SetDirection(const MoveDirection&);
     int Grow(int l = 1);
 
 private:
