@@ -15,7 +15,10 @@ int main()
     window.setFramerateLimit(5);
     window.setKeyRepeatEnabled(false);
 
-    std::vector<logic::Birb_c> birbs(1000, logic::Birb_c(logic::Position_t::GetRandom(750)));
+    std::vector<logic::Birb_c> birbs(100);
+    std::for_each(birbs.begin(), birbs.end(), [](logic::Birb_c& b) {
+        b.position = logic::Position_t::GetRandom(750);
+    });
     bool pause = false;
 
     while (window.isOpen()) {
