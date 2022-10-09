@@ -1,9 +1,12 @@
 #include "config.hpp"
-#include "logic/game.hpp"
-#include "ui/render_game.hpp"
+#include "logic/birb.hpp"
+#include "ui/render_birbs.hpp"
+#include "ui/render_board.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 int main()
 {
@@ -12,9 +15,8 @@ int main()
     window.setFramerateLimit(5);
     window.setKeyRepeatEnabled(false);
 
+    std::vector<logic::Birb_c> birbs(1000, logic::Birb_c(logic::Position_t::GetRandom(750)));
     bool pause = false;
-    logic::Game game(config::TILES_X);
-    logic::MoveDirection mdir = logic::MoveDirection::up;
 
     while (window.isOpen()) {
         sf::Event e;
@@ -24,11 +26,6 @@ int main()
 
             if (e.type == sf::Event::KeyPressed) {
                 switch (e.key.code) {
-                    case sf::Keyboard::Up: /*****/ mdir = logic::MoveDirection::up; break;
-                    case sf::Keyboard::Down: /***/ mdir = logic::MoveDirection::down; break;
-                    case sf::Keyboard::Left: /***/ mdir = logic::MoveDirection::left; break;
-                    case sf::Keyboard::Right: /**/ mdir = logic::MoveDirection::right; break;
-
                     case sf::Keyboard::Space: /***/ pause = !pause; break;
                     case sf::Keyboard::Escape: /**/ window.close(); break;
                     default: break;
@@ -38,18 +35,15 @@ int main()
 
         // Logic
         if (!pause) {
-            game.SetDirection(mdir);
-            if (game.CheckCollisions()) {
-                std::cout << "Lost\n";
-                mdir = logic::MoveDirection::up;
-                game = logic::Game(config::TILES_X);
+            for (auto& birb : birbs) {
+                birb.Move(birbs);
             }
-            game.NextRound();
         }
 
         // Rendering
         window.clear();
-        ui::render_game(window, game, window.getSize().x / config::TILES_X);
+        ui::render_board(window);
+        ui::render_birbs(window, birbs);
         window.display();
     }
 }

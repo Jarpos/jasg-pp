@@ -23,13 +23,13 @@ set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
 set(psd ${PROJECT_SOURCE_DIR})
 
 set(cd ${psd}/src/logic)
-set(logiclib ${cd}/game.cpp ${cd}/position.cpp)
+set(logiclib ${cd}/position.cpp)
 add_library(logiclib "${logiclib}")
 
 set(cd ${psd}/src/ui)
-set(uilib ${cd}/render_game.cpp)
+set(uilib ${cd}/render_birbs.cpp
+        ${cd}/render_board.cpp)
 add_library(uilib "${uilib}")
 
 add_executable(jasg-pp src/main.cpp)
-target_link_libraries(jasg-pp logiclib uilib)
-target_link_libraries(jasg-pp sfml-graphics sfml-audio)
+target_link_libraries(jasg-pp logiclib uilib sfml-graphics sfml-audio)
