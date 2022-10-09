@@ -10,11 +10,11 @@ namespace logic
 class Birb_c
 {
 public: // private:
-    size_t id;
     Position_t position;
 
 public:
-    Birb_c(const Position_t& p) : id(id), position(p) {};
+    Birb_c() : position(0, 0) {};
+    Birb_c(const Position_t& p) : position(p) {};
 
 public:
     Position_t Move(const std::vector<Birb_c>& birbs)
