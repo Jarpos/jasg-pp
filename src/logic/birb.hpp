@@ -15,6 +15,7 @@ public: // private:
 public:
     Birb_c() : position(0, 0) {};
     Birb_c(const Position_t& p) : position(p) {};
+    Birb_c(int x, int y) : position(x, y) {};
 
 public:
     Position_t Move(const std::vector<Birb_c>& birbs)
