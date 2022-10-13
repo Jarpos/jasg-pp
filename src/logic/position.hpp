@@ -14,7 +14,6 @@ struct Position_t {
     int operator==(const Position_t& l) const;
     Position_t operator+(const Position_t& l);
     Position_t operator-(const Position_t& l);
-    Position_t operator*(const Position_t& l);
 
     static Position_t GetRandom(int bounds)
     {
@@ -25,8 +24,6 @@ struct Position_t {
         }
         return Position_t(rand() % bounds, rand() % bounds);
     }
-
-    float Dist(const Position_t& l) const;
 };
 
 } // namespace logic
